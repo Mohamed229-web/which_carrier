@@ -1,0 +1,23 @@
+{
+  "slug": "gofo-fr",
+  "name": "GOFO France",
+  "group": "gofo",
+  "markets": { "primaryMarkets": ["FR"], "extraBoost": 1 },
+  "patterns": [
+    {
+      "note": "GOFO FR — format confirmé GFFR + 14 chiffres (exigé par le produit)",
+      "regex": "^GFFRd{14}$",
+      "baseScore": 4
+    },
+    {
+      "note": "GOFO — générique commençant par GF",
+      "regex": "^GF[A-Z0-9]{6,16}$",
+      "baseScore": 2
+    },
+    {
+      "note": "GOFO — générique commençant par GOFO",
+      "regex": "^GOFO[A-Z0-9]{6,16}$",
+      "baseScore": 2
+    }
+  ]
+}

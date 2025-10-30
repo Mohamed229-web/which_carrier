@@ -1,0 +1,8 @@
+{
+  "slug": "usps",
+  "name": "USPS",
+  "group": "usps-group",
+  "markets": { "primaryMarkets": ["US"], "extraBoost": 2 },
+  "trackingUrlTemplate": "https://tools.usps.com/go/TrackConfirmAction?tLabels=%s",
+  "patterns": [{ "regex": "^(?:\\d{20}|\\d{22})$", "baseScore": 2 }]
+}

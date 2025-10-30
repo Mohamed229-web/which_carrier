@@ -1,0 +1,14 @@
+{
+  "name": "which_carrier-monorepo",
+  "private": true,
+  "license": "Apache-2.0",
+  "workspaces": [
+    "packages/*"
+  ],
+  "packageManager": "pnpm@9.0.0",
+  "scripts": {
+    "build": "pnpm -r run build",
+    "dev": "pnpm -r --filter which_carrier-cli run dev",
+    "test": "echo 'add tests in packages/*'"
+  }
+}

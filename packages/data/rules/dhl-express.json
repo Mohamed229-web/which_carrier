@@ -1,0 +1,11 @@
+{
+  "slug": "dhl-express",
+  "name": "DHL Express",
+  "group": "dhl-group",
+  "markets": {
+    "primaryMarkets": ["DE", "NL", "BE", "GB", "FR", "SG", "HK", "US"],
+    "extraBoost": 1
+  },
+  "trackingUrlTemplate": "https://www.dhl.com/global-en/home/tracking/tracking-express.html?tracking-id=%s",
+  "patterns": [{ "regex": "^(?:\\d{10}|\\d{11})$", "baseScore": 2 }]
+}

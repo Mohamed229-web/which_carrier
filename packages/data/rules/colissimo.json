@@ -1,0 +1,25 @@
+{
+  "slug": "colissimo",
+  "name": "Colissimo (La Poste)",
+  "group": "post-fr",
+  "markets": { "primaryMarkets": ["FR"], "extraBoost": 2 },
+  "trackingUrlTemplate": "https://www.laposte.fr/outils/suivre-vos-envois?code=%s",
+  "patterns": [
+    {
+      "note": "S10 FR international",
+      "regex": "^[A-Z]{2}\\d{9}FR$",
+      "checksum": { "fn": "s10" },
+      "baseScore": 4
+    },
+    {
+      "note": "Colissimo national 13 alphanumériques",
+      "regex": "^[A-Z0-9]{13}$",
+      "baseScore": 3
+    },
+    {
+      "note": "Colissimo national variante alphanumérique (ex: 6C20218617050)",
+      "regex": "^[0-9A-Z]{13}$",
+      "baseScore": 3
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "slug": "canada-post",
+  "name": "Canada Post",
+  "group": "post-ca",
+  "markets": { "primaryMarkets": ["CA"], "extraBoost": 2 },
+  "trackingUrlTemplate": "https://www.canadapost-postescanada.ca/track-reperage/en#/search?searchFor=%s",
+  "patterns": [
+    {
+      "note": "Canada Post 16 digits (weighted Mod10 3/1)",
+      "regex": "^\\s*(?:\\d\\s*){16}$",
+      "checksum": { "group": 0, "fn": "mod10_3_1" },
+      "baseScore": 4
+    }
+  ]
+}

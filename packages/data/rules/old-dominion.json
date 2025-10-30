@@ -1,0 +1,21 @@
+{
+  "slug": "old-dominion",
+  "name": "Old Dominion Freight Line",
+  "group": "old-dominion",
+  "markets": { "primaryMarkets": ["US"], "extraBoost": 1 },
+  "trackingUrlTemplate": "https://www.odfl.com/us/en/tools/trace-track-ltl-freight/trace.html?proNumbers=%s",
+  "patterns": [
+    {
+      "note": "ODFL standard (77[78]|072|780) + 7d + check (Luhn). Spaces optional.",
+      "regex": "^s*(?:77[78]|072|780)(?:s*d){7}s*ds*$",
+      "checksum": { "group": 0, "fn": "luhn" },
+      "baseScore": 4
+    },
+    {
+      "note": "ODFL Guaranteed: 80 + 8d + check (Luhn). Spaces optional.",
+      "regex": "^s*80(?:s*d){8}s*ds*$",
+      "checksum": { "group": 0, "fn": "luhn" },
+      "baseScore": 4
+    }
+  ]
+}

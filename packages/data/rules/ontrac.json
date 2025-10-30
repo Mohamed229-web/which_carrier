@@ -1,0 +1,29 @@
+{
+  "slug": "ontrac",
+  "name": "OnTrac",
+  "group": "ontrac",
+  "markets": { "primaryMarkets": ["US"], "extraBoost": 1 },
+  "trackingUrlTemplate": "https://www.ontrac.com/tracking/?number=%s",
+  "patterns": [
+    {
+      "note": "OnTrac C — C + 13d + check, checksum with virtual '4' prefix (Luhn)",
+      "regex": "^\\s*C\\s*(?:[0-9]\\s*){13}[0-9]\\s*$",
+      "checksum": {
+        "group": 0,
+        "fn": "custom",
+        "customFnName": "ontrac_c_mod10"
+      },
+      "baseScore": 4
+    },
+    {
+      "note": "OnTrac D — D + 13d + check, checksum with virtual '5' prefix (Luhn)",
+      "regex": "^\\s*D\\s*(?:[0-9]\\s*){13}[0-9]\\s*$",
+      "checksum": {
+        "group": 0,
+        "fn": "custom",
+        "customFnName": "ontrac_d_mod10"
+      },
+      "baseScore": 4
+    }
+  ]
+}

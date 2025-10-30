@@ -1,0 +1,19 @@
+{
+  "slug": "postal-s10",
+  "name": "Postal (UPU S10)",
+  "group": "post",
+  "patterns": [
+    {
+      "note": "S10 2 letters + 9 digits + 2 letters",
+      "regex": "^[A-Z]{2}\\d{9}[A-Z]{2}$",
+      "checksum": { "group": 0, "fn": "s10" },
+      "baseScore": 3
+    },
+    {
+      "note": "UPU S10: 2 letters + 8 digits + check + 2 letters (spaces optional)",
+      "regex": "^\\s*(?:[A-Z]\\s*){2}(?:\\d\\s*){8}\\d\\s*(?:[A-Z]\\s*){2}\\s*$",
+      "checksum": { "group": 0, "fn": "s10" },
+      "baseScore": 2
+    }
+  ]
+}

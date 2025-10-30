@@ -1,0 +1,17 @@
+{
+  "slug": "landmark",
+  "name": "Landmark Global LTN",
+  "group": "landmark",
+  "markets": {
+    "primaryMarkets": ["US", "CA", "GB", "FR", "NL", "BE"],
+    "extraBoost": 1
+  },
+  "trackingUrlTemplate": "https://track.landmarkglobal.com/?search=%s",
+  "patterns": [
+    {
+      "note": "Landmark LTN########N1 (espaces optionnels)",
+      "regex": "^s*Ls*Ts*Ns*(?:[0-9]s*){8}s*Ns*1s*$",
+      "baseScore": 4
+    }
+  ]
+}

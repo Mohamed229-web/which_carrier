@@ -1,0 +1,41 @@
+{
+  "slug": "dpd",
+  "name": "DPD",
+  "group": "dpd-group",
+  "markets": {
+    "primaryMarkets": [
+      "DE",
+      "FR",
+      "NL",
+      "BE",
+      "AT",
+      "PL",
+      "CZ",
+      "SK",
+      "HU",
+      "GB",
+      "IE"
+    ],
+    "extraBoost": 1
+  },
+  "trackingUrlTemplate": "https://www.dpdgroup.com/nl/mydpd/my-parcels/track?lang=en&parcelNumber=%s",
+  "patterns": [
+    {
+      "note": "DPD 28+1 (ZIP7 + 14 + service3 + country3 + check)",
+      "regex": "^\\s*(?:[0-9A-Z]\\s*){29}$",
+      "checksum": { "group": 0, "fn": "mod_37_36" },
+      "baseScore": 4
+    },
+    {
+      "note": "DPD 14+1 (short + check)",
+      "regex": "^\\s*(?:[0-9A-Z]\\s*){15}$",
+      "checksum": { "group": 0, "fn": "mod_37_36" },
+      "baseScore": 3
+    },
+    {
+      "note": "DPD 14 digits (no check digit present, heuristic)",
+      "regex": "^\\d{14}$",
+      "baseScore": 2
+    }
+  ]
+}

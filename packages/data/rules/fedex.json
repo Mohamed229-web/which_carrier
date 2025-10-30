@@ -1,0 +1,17 @@
+{
+  "slug": "fedex",
+  "name": "FedEx",
+  "group": "fedex-group",
+  "markets": {
+    "primaryMarkets": ["US", "CA", "GB", "DE", "FR", "SG", "AU"],
+    "extraBoost": 1
+  },
+  "trackingUrlTemplate": "https://www.fedex.com/fedextrack/?tracknumbers=%s",
+  "patterns": [
+    {
+      "note": "FedEx 12/15/20/22/34 digits",
+      "regex": "^(?:\\d{12}|\\d{15}|\\d{20}|\\d{22}|\\d{34})$",
+      "baseScore": 2
+    }
+  ]
+}

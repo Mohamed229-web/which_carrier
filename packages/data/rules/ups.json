@@ -1,0 +1,14 @@
+{
+  "slug": "ups",
+  "name": "UPS",
+  "group": "ups-group",
+  "markets": {
+    "primaryMarkets": ["US", "CA", "GB", "DE", "FR", "IT", "ES"],
+    "extraBoost": 1
+  },
+  "trackingUrlTemplate": "https://www.ups.com/track?loc=en_US&tracknum=%s",
+  "patterns": [
+    { "note": "UPS 1Z format", "regex": "^1Z[0-9A-Z]{16}$", "baseScore": 3 },
+    { "note": "UPS 11 digits (legacy)", "regex": "^\\d{11}$" }
+  ]
+}

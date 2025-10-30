@@ -1,0 +1,23 @@
+{
+  "slug": "lasership",
+  "name": "LaserShip",
+  "group": "lasership",
+  "markets": { "primaryMarkets": ["US"], "extraBoost": 1 },
+  "patterns": [
+    {
+      "note": "LaserShip LX/LI/LA/LH/LE/LN — L + [AIEHNX] + [1-3] + 7 digits (spaces optional)",
+      "regex": "^s*Ls*[AIEHNX]s*[1-3]s*(?:[0-9]s*){7}s*$",
+      "baseScore": 4
+    },
+    {
+      "note": "LaserShip 1LS7 (15) — 1LS7 + [1|2] + 4 digits + 6 digits",
+      "regex": "^s*1s*Ls*Ss*7s*[12]s*(?:[0-9]s*){4}(?:[0-9]s*){6}s*$",
+      "baseScore": 4
+    },
+    {
+      "note": "LaserShip 1LS7 (18) — 1LS7 + [1|2] + 2 digits + 0 1 + [1-4] + 6 digits - 1",
+      "regex": "^s*1s*Ls*Ss*7s*[12]s*(?:[0-9]s*){2}s*0s*1s*[1234]s*(?:[0-9]s*){6}s*-s*1s*$",
+      "baseScore": 4
+    }
+  ]
+}
