@@ -20,44 +20,44 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    env:
-      # Base path like "/<REPO_NAME>/" for GitHub Pages
-      BASE_PATH: "/${{ github.event.repository.name }}/"
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: "pnpm"
+          cache: pnpm
 
-      - name: Enable Corepack (uses packageManager)
-        run: corepack enable
+      - run: corepack enable
 
-      - name: Install deps (workspace)
-        run: pnpm install
+      - run: pnpm install
 
-      - name: Build workspace (core + data)
+      # Détermine BASE_PATH dynamiquement :
+      - name: Set BASE_PATH
+        id: base
+        run: |
+          REPO="${{ github.event.repository.name }}"
+          if [[ "$REPO" == *".github.io" ]]; then
+            echo "BASE_PATH=/" >> $GITHUB_ENV
+          else
+            echo "BASE_PATH=/$REPO/" >> $GITHUB_ENV
+          fi
+          echo "Using BASE_PATH=$BASE_PATH"
+
+      - name: Build core + data
         run: pnpm -r --filter which_carrier --filter which_carrier-data build
 
       - name: Build web demo (Vite)
         working-directory: packages/web
         run: pnpm build
 
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v5
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: packages/web/dist
 
-      - name: Deploy to GitHub Pages
-        id: deployment
+      - id: deployment
         uses: actions/deploy-pages@v4
