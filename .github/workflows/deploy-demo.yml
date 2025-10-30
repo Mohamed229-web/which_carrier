@@ -10,11 +10,20 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     env:
+      # Base path like "/<REPO_NAME>/" for GitHub Pages
       BASE_PATH: "/${{ github.event.repository.name }}/"
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -27,7 +36,9 @@ jobs:
         with:
           node-version: 20
           cache: "pnpm"
-      - run: corepack enable
+
+      - name: Enable Corepack (uses packageManager)
+        run: corepack enable
 
       - name: Install deps (workspace)
         run: pnpm install
@@ -35,9 +46,9 @@ jobs:
       - name: Build workspace (core + data)
         run: pnpm -r --filter which_carrier --filter which_carrier-data build
 
-      - name: Build web demo
+      - name: Build web demo (Vite)
         working-directory: packages/web
-        run: pnpm build:demo
+        run: pnpm build
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
